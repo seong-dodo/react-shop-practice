@@ -1,11 +1,15 @@
+/* eslint-disable */
+
 import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Button, Jumbotron } from 'react-bootstrap';
 import './App.css';
+import data from './data.js';
 import 정보 from'./data.js';
 
 function App() {
 
-  let [shoes, shoes변경]= useState (정보);
+
+  let [shoes, shoes변경] = useState (정보);
 
   return (
     <div className="App">
@@ -60,11 +64,34 @@ function App() {
     </div>
 
 
+          <Product />
+
+
 
   </div>
   );
 }
 
+
+
+function Product(){
+  let [신발, 신발변경] = useState(정보);
+
+  return(
+    <div className="col-md-4">
+       <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="100%" />
+        <h4> { 신발[2].title } </h4>
+        <p> { 신발[2].content }&{ 신발[2].price } </p>
+    </div>
+  )
+ } 
+
+
+
+
 export default App;
+
+
+
 
 
