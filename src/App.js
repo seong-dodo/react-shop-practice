@@ -10,6 +10,9 @@ function App() {
 
 
   let [shoes, shoes변경] = useState (정보);
+ 
+
+
 
   return (
     <div className="App">
@@ -45,27 +48,17 @@ function App() {
 
    <div className="container">
      <div className="row">
-       <div className="col-md-4">
-         <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
-         <h4>{ shoes[0].title }</h4>
-         <p>{ shoes[0].content }&{ shoes[0].price }</p>
-       </div>
-       <div className="col-md-4">
-         <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="100%" />
-         <h4>{ shoes[1].title }</h4>
-         <p>{ shoes[1].content }&{ shoes[1].price }</p>
-       </div>
-       <div className="col-md-4">
-         <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="100%" />
-         <h4>{ shoes[2].title }</h4>
-         <p>{ shoes[2].content }&{ shoes[2].price }</p>
-       </div>
+
+       {
+         shoes.map( (a,i)=>{
+           return <Product shoes={ shoes[i] } i={i} key={i} />
+         })            
+        
+        }
+    
+
       </div>
     </div>
-
-
-          <Product />
-
 
 
   </div>
@@ -74,14 +67,13 @@ function App() {
 
 
 
-function Product(){
-  let [신발, 신발변경] = useState(정보);
+function Product(props){
 
   return(
     <div className="col-md-4">
-       <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="100%" />
-        <h4> { 신발[2].title } </h4>
-        <p> { 신발[2].content }&{ 신발[2].price } </p>
+       <img src={'https://codingapple1.github.io/shop/shoes' + (props.i +1) + '.jpg'} width="100%" />
+        <h4> { props.shoes.title } </h4>
+        <p> { props.shoes.content }&{ props.shoes.price } </p>
     </div>
   )
  } 
