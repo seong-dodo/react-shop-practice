@@ -4,7 +4,10 @@ import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Button, Jumbotron } from 'react-bootstrap';
 import './App.css';
 import data from './data.js';
-import 정보 from'./data.js';
+import 정보 from './data.js';
+import Detail from './Detail.js';
+
+import { Link, Route, Switch } from 'react-router-dom';
 
 function App() {
 
@@ -22,8 +25,8 @@ function App() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
+          <Nav.Link> <Link to="/">Home</Link> </Nav.Link>
+          <Nav.Link> <Link to="/detail">Detail</Link> </Nav.Link>
           <NavDropdown title="Dropdown" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -35,30 +38,37 @@ function App() {
      </Navbar.Collapse>
     </Navbar>
 
-    <Jumbotron className="background">
-      <h1>20% Season OFF</h1>
-      <p>
-      This is a simple hero unit, a simple jumbotron-style component for calling
-      extra attention to featured content or information.
-      </p>
-      <p>
-        <Button variant="primary">Learn more</Button>
-      </p>
-    </Jumbotron>
 
-   <div className="container">
-     <div className="row">
 
-       {
-         shoes.map( (a,i)=>{
-           return <Product shoes={ shoes[i] } i={i} key={i} />
-         })            
+    <Route exact path="/">
+       <Jumbotron className="background">
+         <h1>20% Season OFF</h1>
+         <p>
+         This is a simple hero unit, a simple jumbotron-style component for calling
+         extra attention to featured content or information.
+         </p>
+         <p>
+           <Button variant="primary">Learn more</Button>
+         </p>
+       </Jumbotron>
+
+       <div className="container">
+         <div className="row">
+           {
+             shoes.map( (a,i)=>{
+               return <Product shoes={ shoes[i] } i={i} key={i} /> } )            
+            }
         
-        }
-    
+          </div>
+        </div>
+    </Route>
 
-      </div>
-    </div>
+    <Route path="/detail">
+       <Detail />
+    </Route>
+
+     {/* <Route path="어쩌구" component={ Modal } ></Route>   */}
+
 
 
   </div>
