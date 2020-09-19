@@ -39,6 +39,7 @@ function App() {
     </Navbar>
 
 
+    <Switch>
 
     <Route exact path="/">
        <Jumbotron className="background">
@@ -66,6 +67,14 @@ function App() {
     <Route path="/detail">
        <Detail />
     </Route>
+
+    <Route path="/:id">
+       <div>dk</div>
+    </Route>
+
+
+    </Switch>
+    
 
      {/* <Route path="어쩌구" component={ Modal } ></Route>   */}
 
