@@ -64,16 +64,16 @@ function App() {
         </div>
     </Route>
 
-    <Route path="/detail">
-       <Detail />
+    <Route path="/detail/:id">
+       <Detail shoes={ shoes } />
     </Route>
-
+ 
     <Route path="/:id">
        <div>dk</div>
     </Route>
 
 
-    </Switch>
+    </Switch> 
     
 
      {/* <Route path="어쩌구" component={ Modal } ></Route>   */}
