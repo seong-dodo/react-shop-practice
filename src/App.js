@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Button, Jumbotron } from 'react-bootstrap';
 import './App.css';
 import data from './data.js';
-import 정보 from './data.js';
 import Detail from './Detail.js';
 
 import { Link, Route, Switch } from 'react-router-dom';
@@ -12,7 +11,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 function App() {
 
 
-  let [shoes, shoes변경] = useState (정보);
+  let [shoes, shoes변경] = useState (data);
  
 
 
@@ -68,9 +67,10 @@ function App() {
        <Detail shoes={ shoes } />
     </Route>
  
-    <Route path="/:id">
-       <div>dk</div>
-    </Route>
+    {/*<Route path="/:id">
+         <div>안녕하세요</div>
+       </Route>*/}
+        
 
 
     </Switch> 
