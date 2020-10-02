@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory , useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
@@ -16,15 +16,22 @@ import './Detail.scss';
 
 
 function Detail(props) {
+  
+    let  history = useHistory();
+    let [isShow, isShow변경] = useState( true );
+    let [input, input변경] = useState(' ');
+
+
+  useEffect ( ()=>{
+    let 타이머 = setTimeout ( ()=>{ isShow변경( false ) }, 2000 );
+    return ()=>{ clearTimeout(타이머) }
+  }, [ isShow ] );
 
   let { id } = useParams();
   let 찾은상품 = props.shoes.find(
     function(상품){
       return 상품.id == id
     } );
-
-  let  history = useHistory();
-  
 
     return(
         <div className="container">
@@ -34,13 +41,22 @@ function Detail(props) {
            <제목 색상= "blue" > Detail </제목> */}
           </박스>
 
+          { input }
+          <input onChange={ (e)=>{ input변경( e.target.value ) } } />
+
           <div className="my-alert">
             <p>재고가 얼마 남지 않았습니다!!!</p>
           </div>
-          <div className="my-alert-yellow">
-            <p>재입고 없는 상품</p>
-          </div>
 
+          {
+
+            isShow === true
+            ?<div className="my-alert-yellow">
+               <p>재입고 없는 상품</p>
+              </div>
+            : null
+
+          }
             <div className="row">
               <div className="col-md-6">
                 <img src={'https://codingapple1.github.io/shop/shoes' + (props.shoes[id].id + 1) + '.jpg'}  width="100%" />
