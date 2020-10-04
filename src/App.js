@@ -13,7 +13,7 @@ function App() {
 
 
   let [shoes, shoes변경] = useState (data);
- 
+  let [재고, 재고변경] = useState ([10,11,12]);
 
 
 
@@ -66,6 +66,7 @@ function App() {
             axios.get('https://codingapple1.github.io/shop/data2.json')
             .then( (result)=>{
               console.log(result.data)
+              shoes변경 ([...shoes , ...result.data ]);
             } )
             .catch( ()=>{
               console.log('실패했어요')
@@ -76,7 +77,7 @@ function App() {
     </Route>
 
     <Route path="/detail/:id">
-       <Detail shoes={ shoes } />
+       <Detail shoes={ shoes } 재고={재고} 재고변경={재고변경} />
     </Route>
  
     {/*<Route path="/:id">
