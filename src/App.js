@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Navbar, Nav, NavDropdown, Button, Jumbotron } from 'react-bootstrap';
 import './App.css';
 import data from './data.js';
@@ -8,6 +8,11 @@ import Detail from './Detail.js';
 import axios from 'axios';
 
 import { Link, Route, Switch } from 'react-router-dom';
+
+import Cart from './Cart.js'
+
+
+let 재고context = React.createContext();
 
 function App() {
 
@@ -54,6 +59,9 @@ function App() {
        </Jumbotron>
 
        <div className="container">
+
+        <재고context.Provider value={재고} >
+
          <div className="row">
            {
              shoes.map( (a,i)=>{
@@ -61,6 +69,9 @@ function App() {
             }
         
           </div>
+        
+        </재고context.Provider>
+
           <button className="btn btn-primary" onClick={ ()=>{
 
             axios.get('https://codingapple1.github.io/shop/data2.json')
@@ -78,6 +89,11 @@ function App() {
 
     <Route path="/detail/:id">
        <Detail shoes={ shoes } 재고={재고} 재고변경={재고변경} />
+    </Route>
+
+
+    <Route>
+       <Cart path="/cart"></Cart>
     </Route>
  
     {/*<Route path="/:id">
@@ -101,11 +117,14 @@ function App() {
 
 function Product(props){
 
+  let 재고 = useContext(재고context);
+
   return(
     <div className="col-md-4">
        <img src={'https://codingapple1.github.io/shop/shoes' + (props.i +1) + '.jpg'} width="100%" />
         <h4> { props.shoes.title } </h4>
         <p> { props.shoes.content }&{ props.shoes.price } </p>
+        {재고}
     </div>
   )
  } 
