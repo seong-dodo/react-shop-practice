@@ -96,6 +96,10 @@ function App() {
        <Cart path="/cart"></Cart>
     </Route>
  
+
+
+
+ 
     {/*<Route path="/:id">
          <div>안녕하세요</div>
        </Route>*/}
