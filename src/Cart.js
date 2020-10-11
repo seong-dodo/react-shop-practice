@@ -21,17 +21,17 @@ function Cart(props){
            </thead>
            <tbody>
              <tr>
-               <td>1</td>
+               <td> { props.state[0].id } </td>
                <td> { props.state[0].name } </td>
-               <td>Table cell</td>
-               <td>Table cell</td>
+               <td> { props.state[0].quan } </td>
+               <td> { props.state[0].price }</td>
                <td>Table cell</td>
              </tr>
              <tr>
-               <td>2</td>
-               <td>Table cell</td>
-               <td>Table cell</td>
-               <td>Table cell</td>
+             <td> { props.state[1].id } </td>
+               <td> { props.state[1].name } </td>
+               <td> { props.state[1].quan } </td>
+               <td> { props.state[1].price }</td>
                <td>Table cell</td>
              </tr>
            </tbody>

@@ -9,7 +9,14 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux' ;
 
-let store = createStore ( ()=>{ return [{ id : 0, name : '멋진신발', quan : 2 }] } );
+let store = createStore ( ()=>{ 
+  return [
+  { id : 0, name : '멋진신발', quan : 1, price : 25000 },
+  { id : 1, name : '편한신발', quan : 1, price : 35000 }
+
+
+  ]
+  } );
 
 
 
