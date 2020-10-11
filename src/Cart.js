@@ -2,6 +2,12 @@ import React from 'react';
 import {Table} from 'react-bootstrap';
 import { connect } from 'react-redux';
 
+function 총액계산(수량, 가격){
+ return(
+     수량 * 가격
+ )
+}
+
 
 function Cart(props){
 
@@ -15,7 +21,8 @@ function Cart(props){
                <th>#</th>
                <th>상품명</th>
                <th>수량</th>
-               <th>금액</th>
+               <th>가격</th>
+               <th>총 금액</th>
                <th>변경</th>
              </tr>
            </thead>
@@ -23,18 +30,22 @@ function Cart(props){
            <tbody >
            {
             
-            props.state.map (function(상품) {          
+            props.state.map ( (a,i)=> {          
                return(
-
-                    <tr>
-                      <td> { 상품.id } </td>
-                      <td> { 상품.name } </td>
-                      <td> { 상품.quan } </td>
-                      <td> { 상품.price }</td>
-                      <td>Table cell</td>
+                    <tr key={i}>
+                      <td> { a.id } </td>
+                      <td> { a.name } </td>
+                      <td> { a.quan } </td>
+                      <td> { a.price }</td>
+                      <td> {      a.quan>=5
+                      ?  a.quan * a.price * 0.5
+                      :  a.quan * a.price }  </td>
+                      <td>
+                         <button onClick={ ()=>{ props.dispatch( { type : '수량감소', id : i } ) } } > - </button> 
+                         <button onClick={ ()=>{ props.dispatch( { type : '수량증가', id : i } ) } } > + </button> 
+                      </td>
                     </tr>
-               )
-                 
+               )               
             }) 
           }
         </tbody>
