@@ -30,17 +30,28 @@ let 초기값 = [
 
 function reducer(state=초기값, 액션 ){
   if (액션.type === '항목추가'){
+     // state 안에 id : 액션.id 인게 있나?
+    let foundId = state.findIndex( (a)=>{ return a.id === 액션.payload.id } );
+   
+  if( foundId >= 0 ){
+    let copy = [...state];
+    copy[foundId].quan++;
+    return copy
+  } else {
     let copy = [...state];
     copy.push(액션.payload);
     return copy
+  }
+
+   
 
   } else if (액션.type === '수량감소') {
   let copy = [...state];
-  copy[액션.id].quan--;
+  copy[액션.데이터].quan--;
   return copy
  } else if (액션.type === '수량증가') {
   let copy = [...state];
-  copy[액션.id].quan++;
+  copy[액션.데이터].quan++;
   return copy
 } else {
   return state

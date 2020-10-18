@@ -41,8 +41,8 @@ function Cart(props){
                       ?  a.quan * a.price * 0.5
                       :  a.quan * a.price }  </td>
                       <td>
-                         <button onClick={ ()=>{ props.dispatch( { type : '수량감소', id : i } ) } } > - </button> 
-                         <button onClick={ ()=>{ props.dispatch( { type : '수량증가', id : i } ) } } > + </button> 
+                         <button onClick={ ()=>{ props.dispatch( { type : '수량감소', 데이터 : a.id } ) } } > - </button> 
+                         <button onClick={ ()=>{ props.dispatch( { type : '수량증가', 데이터 : a.id } ) } } > + </button> 
                       </td>
                     </tr>
                )               

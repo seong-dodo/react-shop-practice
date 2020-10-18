@@ -74,7 +74,7 @@ function Detail(props) {
                 <Info 재고={props.재고} ></Info>
                 <button className="btn btn-danger" onClick={ ()=>{ 
                   props.재고변경([9,10,11])
-                  props.dispatch({ type : '항목추가' , payload : {id : 2, name : '새로운신발', quan : 1, price : 55000} })
+                  props.dispatch({ type : '항목추가' , payload : {id : 찾은상품.id , name : 찾은상품.title , quan : 찾은상품.quan , price : 찾은상품.price } })
                   history.push('/cart');
                   } } >주문하기</button> 
                 <button className="btn btn-danger" onClick={ ()=>{ history.goBack(); } }>뒤로가기</button> 

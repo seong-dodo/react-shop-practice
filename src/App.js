@@ -7,7 +7,7 @@ import data from './data.js';
 import Detail from './Detail.js';
 import axios from 'axios';
 
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, useHistory } from 'react-router-dom';
 
 import Cart from './Cart.js'
 
@@ -99,7 +99,7 @@ function App() {
 
 
 
- 
+
     {/*<Route path="/:id">
          <div>안녕하세요</div>
        </Route>*/}
@@ -122,9 +122,10 @@ function App() {
 function Product(props){
 
   let 재고 = useContext(재고context);
+  let history = useHistory();
 
   return(
-    <div className="col-md-4">
+    <div className="col-md-4" onClick={ ()=>{ history.push('/detail/'+ props.shoes.id ) } } >
        <img src={'https://codingapple1.github.io/shop/shoes' + (props.i +1) + '.jpg'} width="100%" />
         <h4> { props.shoes.title } </h4>
         <p> { props.shoes.content }&{ props.shoes.price } </p>
